@@ -2,7 +2,7 @@
 
 START_TIME=$(date +%s)
 END_TIME=$(date +%s)
-TOTAL_TIME=$(($END-TIME-$START-TIME))
+TOTAL_TIME=$(($END_TIME-$START_TIME))
 
 echo "the script start time is:$START_TIME"
 
