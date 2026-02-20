@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# run command inside the script and give output to variable
+#DATE=(date +%s)
 START_TIME=$(date +%s)
 echo "the script start time:$START_TIME"
 sleep 20
