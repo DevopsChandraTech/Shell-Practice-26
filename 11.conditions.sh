@@ -4,8 +4,8 @@
 # -gt = greater than
 # -ne = not equal 
 
-# echo "pls enter the number"
-# read NUMBER
+echo "pls enter the number"
+read NUMBER
 NUMBER=$1
 if [ $NUMBER -gt 10 ]; then
     echo "given number $NUMBER greater than 10"
