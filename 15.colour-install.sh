@@ -15,7 +15,7 @@ VALIDATE(){
         echo -e "$R ERROR $N:: $2 Command Not Found, Please Check Syntax Once."
         exit 1
     else 
-        echo -e "$G Success $N:: Proceed with $2 Installation."
+        echo -e "$G Success $N:: $2 Installed."
     fi
 }
 dnf list installed mysql
