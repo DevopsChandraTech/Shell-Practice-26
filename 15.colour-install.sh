@@ -27,7 +27,7 @@ else
     echo -e "$2 already exist..! $Y Skipping $N"
 fi
 
-dnf list installed mysql
+dnf list installed nginx
 if [ $? -ne 0 ]; then
     echo -e "$R $2 $N not installed Proceed with Installation"
     dnf install nginx -y
@@ -36,7 +36,7 @@ else
     echo -e "$2 already exist..! $Y Skipping $N"
 fi
 
-dnf list installed mysql
+dnf list installed python3
 if [ $? -ne 0 ]; then
     echo -e "$R $2 $N not installed Proceed with Installation"
     dnf install python3 -y
