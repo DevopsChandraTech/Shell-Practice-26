@@ -6,12 +6,12 @@ if [ $USER_ID -ne 0 ]; then
     exit 1 #if other than 0 it is failure
 fi
 
-VALIDATE() {
+VALIDATE() { #functions receives inputs through args, just like shell script args.
     if [ $1 -ne 0 ]; then
         echo "ERROR:: Command $2 Not Found,Please Check and Try Again"
         exit 1 #if other than 0 it is failure
     else 
-        echo "SUCCESS:: Proceed with Installation"
+        echo "SUCCESS:: Proceed with $2 Installation"
     fi
 }
 
@@ -21,8 +21,8 @@ dnf install mysql -y
 VALIDATE $? "Nginx"
 dnf install nginx -y
 
-VALIDATE $? "Mongosh"
-dnf install mongodb-mongosh -y
+VALIDATE $? "Python"
+dnf install python3 -y
 
 
 
