@@ -7,11 +7,13 @@ N="\e[0m"
 
 if [ $USER_ID -ne 0 ]; then
     echo "$RERROR$N:: RUN COMMAND WITH ROOT USER PRIVILIGES."
+    exit 1
 fi
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
         echo "$RERROR$N:: $2 Command Not Found, Please Check Syntax Once."
+        exit 1
     else 
         echo "$GSuccess$N:: Proceed with $2 Installation."
     fi
@@ -23,6 +25,7 @@ if [ $? -ne 0 ]; then
     VALIDATE $? "MySql"
 else 
     "$2 already exist..! $YSkipping$N"
+fi
 
 dnf list installed mysql
 if [ $? -ne 0 ]; then
@@ -31,6 +34,7 @@ if [ $? -ne 0 ]; then
     VALIDATE $? "Nginx"
 else 
     "$2 already exist..! $YSkipping$N"
+fi
 
 dnf list installed mysql
 if [ $? -ne 0 ]; then
@@ -39,3 +43,4 @@ if [ $? -ne 0 ]; then
     VALIDATE $? "Python"
 else 
     "$2 already exist..! $YSkipping$N"
+fi
