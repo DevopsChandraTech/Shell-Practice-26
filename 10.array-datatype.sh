@@ -7,7 +7,7 @@ SUM=$(($NUMBER1+$NUMBER2+$NAME))
 
 echo "SUM IS:${SUM}"
 
-LEADERS=${"Modi","Putin","Trump","Chang"}
+LEADERS={"Modi","Putin","Trump","Chang"}
 
 echo "all leaders: ${LEADERS[@]}"
 echo "first leader: ${LEADERS[0]}"
