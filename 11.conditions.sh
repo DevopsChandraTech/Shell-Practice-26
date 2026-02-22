@@ -4,13 +4,13 @@
 # -gt = greater than
 # -ne = not equal 
 
-echo "pls enter the number"
-read NUMBER
+# echo "pls enter the number"
+# read NUMBER
 NUMBER=$1
 if [ $NUMBER -gt 10 ]; then
-    echo "given number greater than 10"
+    echo "given number $NUMBER greater than 10"
 elif [ $NUMBER -eq 10 ]; then
-    echo "given number is equal to 10"
+    echo "given number $NUMBER is equal to 10"
 else 
-    echo "given number less than 10"
+    echo "given number $NUMBER less than 10"
 fi
