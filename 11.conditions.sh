@@ -1,16 +1,8 @@
 #!/bin/bash
-# eq = equal
-# -lt = less than
-# -gt = greater than
-# -ne = not equal 
+NUMBER=$@
 
-# echo "pls enter the number"
-# read NUMBER
-NUMBER=$1
-if [ $NUMBER -gt 10 ]; then
-    echo "given number $NUMBER greater than 10"
-elif [ $NUMBER -eq 10 ]; then
-    echo "given number $NUMBER is equal to 10"
+if [ $((NUMBER % 2)) -eq 0 ]; then
+    echo "Given number $NUMBER is even"
 else 
-    echo "given number $NUMBER less than 10"
+    echo "Given number $NUMBER is odd"
 fi
