@@ -18,8 +18,6 @@ VALIDATE() {
     if [ $1 -ne 0 ]; then
         echo -e "$R ERROR $N:: Please check once $R $2 $N Command Not found."
         exit 1
-    else 
-        echo -e "$R SUCCESS $N:: Proceed With $R $2 $N Installation."
     fi
 }
 
