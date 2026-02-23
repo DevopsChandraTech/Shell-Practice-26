@@ -17,6 +17,7 @@ LOGS_FOLDER=/var/log/shell-script
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 mkdir -p $LOGS_FOLDER
+echo "this folder is executed by $(date)"
 
 VALIDATE() {
     if [ $1 -ne 0 ]; then
@@ -31,7 +32,7 @@ if [ $? -ne 0 ]; then
     dnf install mysql -y &>>$LOG_FILE
     VALIDATE $? MySql
 else 
-    echo -e "$R SUCCESS $N:: $R $2 $N already installed $R Skipping $N"
+    echo -e "$2 already exist..! $R Skipping $N"
 fi
 
 
@@ -41,5 +42,5 @@ if [ $? -ne 0 ]; then
     dnf install nginx -y &>> $LOG_FILE
     VALIDATE $? Nginx
 else 
-    echo -e "$R SUCCESS $N:: $R $2 $N already installed $R Skipping $N"
+    echo -e "$2 already exist..! $R Skipping $N"
 fi
