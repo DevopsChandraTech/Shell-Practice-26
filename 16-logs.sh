@@ -47,7 +47,7 @@ fi
 
 dnf list installed python3 &>>$LOG_FILE
 if [ $? -ne 0 ]; then
-    echo -e "$R Installing $N:: Python | tee -a $LOG_FILE
+    echo -e "$R Installing $N:: Python" | tee -a $LOG_FILE
     dnf install python3 -y &>> $LOG_FILE
     VALIDATE $? Python
 else 
