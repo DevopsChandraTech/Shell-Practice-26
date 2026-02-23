@@ -14,7 +14,7 @@ if [ $USER_ID -ne 0 ]; then
 fi
 
 LOGS_FOLDER=/var/log/shell-script
-SCRIPT_NAME=$($0 | cut -d "." -f1)
+SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 mkdir -p $LOGS_FOLDER
 
