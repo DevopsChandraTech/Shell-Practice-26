@@ -22,7 +22,7 @@ VALIDATE() {
 }
 
 dnf list installed mysql
-if [ $? -ne 0 ]; then
+if [ $1 -ne 0 ]; then
     echo -e "$R ERROR $N:: $R $2 $N not installed proceed with installation"
     dnf install mysql -y 
     VALIDATE $? MySql
@@ -32,7 +32,7 @@ fi
 
 
 dnf list installed nginx
-if [ $? -ne 0 ]; then
+if [ $1 -ne 0 ]; then
     echo -e "$R ERROR $N:: $R $2 $N not installed proceed with installation"
     dnf install nginx -y 
     VALIDATE $? Nginx
