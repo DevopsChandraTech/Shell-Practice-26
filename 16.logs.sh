@@ -8,7 +8,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-if [ $USER_ID -ne 0]; then
+if [ $USER_ID -ne 0 ]; then
     echo -e "$R ERROR $N:: Please run with root user privilizes."
     exit 1
 fi
