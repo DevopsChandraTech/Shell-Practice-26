@@ -14,7 +14,7 @@ if [ $USER_ID -ne 0 ]; then
 fi
 
 LOGS_FOLDER=/var/log/shell-script
-SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
+SCRIPT_NAME=$(echo $0 | cut -d "." -f2)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 mkdir -p $LOGS_FOLDER
 echo "this folder is executed by $(date)"
@@ -28,7 +28,7 @@ VALIDATE() {
 
 dnf list installed mysql &>>$LOG_FILE
 if [ $? -ne 0 ]; then
-    echo -e "$R ERROR $N:: $R $2 $N not installed proceed with installation"
+    echo -e "$R Installing $N:: $R $2 $N" &>> $LOG_FILE | tee &>>  $LOG_FILE
     dnf install mysql -y &>>$LOG_FILE
     VALIDATE $? MySql
 else 
@@ -38,7 +38,7 @@ fi
 
 dnf list installed nginx&>>$LOG_FILE
 if [ $? -ne 0 ]; then
-    echo -e "$R ERROR $N:: $R $2 $N not installed proceed with installation"
+    echo -e "$R Installing $N:: $R $2 $N" &>> $LOG_FILE | tee &>>  $LOG_FILE
     dnf install nginx -y &>> $LOG_FILE
     VALIDATE $? Nginx
 else 
@@ -47,7 +47,7 @@ fi
 
 dnf list installed python3&>>$LOG_FILE
 if [ $? -ne 0 ]; then
-    echo -e "$R ERROR $N:: $R $2 $N not installed proceed with installation"
+    echo -e "$R Installing $N:: $R $2 $N" &>> $LOG_FILE | tee &>>  $LOG_FILE
     dnf install python3 -y &>> $LOG_FILE
     VALIDATE $? Python
 else 
