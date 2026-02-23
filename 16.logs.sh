@@ -27,7 +27,7 @@ if [ $? -ne 0 ]; then
     dnf install mysql -y 
     VALIDATE $? MySql
 else 
-    echo -e "$R SUCCESS $N::$R $2 $N already installed $R Skipping $N"
+    echo -e "$R SUCCESS $N:: $R $2 $N already installed $R Skipping $N"
 fi
 
 
@@ -37,5 +37,5 @@ if [ $? -ne 0 ]; then
     dnf install nginx -y 
     VALIDATE $? Nginx
 else 
-    echo -e "$R SUCCESS $N::$R $2 $N already installed $R Skipping $N"
+    echo -e "$R SUCCESS $N:: $R $2 $N already installed $R Skipping $N"
 fi
