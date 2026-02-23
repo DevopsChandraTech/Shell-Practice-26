@@ -8,7 +8,7 @@ N="\e[0m"
 USER_ID=$(id -u) # here id =0 root user otherthan 0 normal user
 
 if [ $USER_ID -ne 0]; then
-    echo "$R ERROR $N:: Please run with root user privilizes."
+    echo -e "$R ERROR $N:: Please run with root user privilizes."
     exit 1
 fi
 
@@ -17,25 +17,25 @@ VALIDATE() {
         echo -e "$R ERROR $N:: Please check once $R $2 $N Command Not found."
         exit 1
     else 
-        echo "$R SUCCESS $N:: Proceed With $R $2 $N Installation."
+        echo -e "$R SUCCESS $N:: Proceed With $R $2 $N Installation."
     fi
 }
 
 dnf list installed -y
 if [ $? -ne 0 ]; then
-    echo "$R ERROR $N:: $R $2 $N not installed proceed with installation"
+    echo -e "$R ERROR $N:: $R $2 $N not installed proceed with installation"
     dnf install mysql -y 
     VALIDATE $? MySql
 else 
-    echo "$R SUCCESS $N::$R $2 $N already installed $R Skipping $N"
+    echo -e "$R SUCCESS $N::$R $2 $N already installed $R Skipping $N"
 fi
 
 
 dnf list installed -y
 if [ $? -ne 0 ]; then
-    echo "$R ERROR $N:: $R $2 $N not installed proceed with installation"
+    echo -e "$R ERROR $N:: $R $2 $N not installed proceed with installation"
     dnf install nginx -y 
     VALIDATE $? Nginx
 else 
-    echo "$R SUCCESS $N::$R $2 $N already installed $R Skipping $N"
+    echo -e "$R SUCCESS $N::$R $2 $N already installed $R Skipping $N"
 fi
