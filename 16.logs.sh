@@ -25,17 +25,17 @@ VALIDATE() {
     fi
 }
 
-dnf list installed mysql
+dnf list installed mysql &>>$LOG_FILE
 if [ $? -ne 0 ]; then
     echo -e "$R ERROR $N:: $R $2 $N not installed proceed with installation"
-    dnf install mysql -y &>> $LOG_FILE
+    dnf install mysql -y &>>$LOG_FILE
     VALIDATE $? MySql
 else 
     echo -e "$R SUCCESS $N:: $R $2 $N already installed $R Skipping $N"
 fi
 
 
-dnf list installed nginx
+dnf list installed nginx&>>$LOG_FILE
 if [ $? -ne 0 ]; then
     echo -e "$R ERROR $N:: $R $2 $N not installed proceed with installation"
     dnf install nginx -y &>> $LOG_FILE
