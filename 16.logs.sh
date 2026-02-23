@@ -3,14 +3,16 @@
 #check user have root privilizes or not
 
 USER_ID=$(id -u) # here id =0 root user otherthan 0 normal user
-if [ $USER_ID -ne 0]; then
-    echo -e "$R ERROR $N:: Please run with root user privilizes."
-    exit 1
-fi
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
+
+if [ $USER_ID -ne 0]; then
+    echo -e "$R ERROR $N:: Please run with root user privilizes."
+    exit 1
+fi
+
 
 VALIDATE() {
     if [ $1 -ne 0 ]; then
