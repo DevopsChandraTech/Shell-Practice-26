@@ -13,6 +13,10 @@ if [ $USER_ID -ne 0 ]; then
     exit 1
 fi
 
+LOGS_FOLDER=/var/log/shell-script
+SCRIPT_NAME=$($0 | cut -d "." -f1)
+LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
+mkdir -p $LOGS_FOLDER
 
 VALIDATE() {
     if [ $1 -ne 0 ]; then
@@ -24,7 +28,7 @@ VALIDATE() {
 dnf list installed mysql
 if [ $? -ne 0 ]; then
     echo -e "$R ERROR $N:: $R $2 $N not installed proceed with installation"
-    dnf install mysql -y 
+    dnf install mysql -y &>> $LOG_FILE
     VALIDATE $? MySql
 else 
     echo -e "$R SUCCESS $N:: $R $2 $N already installed $R Skipping $N"
@@ -34,7 +38,7 @@ fi
 dnf list installed nginx
 if [ $? -ne 0 ]; then
     echo -e "$R ERROR $N:: $R $2 $N not installed proceed with installation"
-    dnf install nginx -y 
+    dnf install nginx -y &>> $LOG_FILE
     VALIDATE $? Nginx
 else 
     echo -e "$R SUCCESS $N:: $R $2 $N already installed $R Skipping $N"
