@@ -28,7 +28,7 @@ VALIDATE(){
 for package in $@;
 do
     # check package status
-    dnf list installed $package
+    dnf list installed $package &>> $LOG_FILE
     if [ $? -ne 0 ]; then
         echo -e "$G Installing::$N $package..!"
         dnf install $package &>> $LOG_FILE
