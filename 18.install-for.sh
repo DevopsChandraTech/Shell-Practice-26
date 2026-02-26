@@ -21,7 +21,7 @@ Y="\e[33m"
 N="\e[0m"
 
 LOG_FOLDER="/var/log/shell-script"
-SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
+SCRIPT_NAME=$(echo $0 | cut -d "." -f2)
 LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.sh"
 mkdir -p /var/log/shell-script
 
@@ -42,7 +42,7 @@ if [ $? -ne 0 ]; then
     dnf install mysql -y &>> $LOG_FILE
     VALIDATE $? MySql
 else 
-    echo -e "$2 already exist...! $Y Skipping..! $N"
+    echo -e "$2 already exist...! $Y Skipping..! $N" &>> $LOG_FILE
 fi
 
 dnf list installed nginx
@@ -52,7 +52,7 @@ if [ $? -ne 0 ]; then
     dnf install nginx -y &>> $LOG_FILE
     VALIDATE $? Nginx
 else 
-    echo -e "$2 already exist...! $Y Skipping..! $N"
+    echo -e "$2 already exist...! $Y Skipping..! $N" &>> $LOG_FILE
 fi
 
 dnf list installed python3
@@ -62,7 +62,7 @@ if [ $? -ne 0 ]; then
     dnf install python3 -y &>> $LOG_FILE
     VALIDATE $? Python
 else 
-    echo -e "$2 already exist...!  $Y Skipping..! $N" 
+    echo -e "$2 already exist...!  $Y Skipping..! $N" &>> $LOG_FILE
 fi
 
 
