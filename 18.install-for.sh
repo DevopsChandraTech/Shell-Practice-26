@@ -34,7 +34,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-dnf list installed mysql
+dnf list installed nginx
 
 if [ $? -ne 0 ]; then
     echo "Not Installed Nginx Proceed With Installation."
