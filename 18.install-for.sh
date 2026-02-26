@@ -15,33 +15,43 @@ if [ $USER_ID -ne 0 ]; then
     exit 1
 fi
 
+VALIDATE(){
+    if [ $? -ne 0 ]; then
+        echo "Error::Command Not Found Plese check once the command"
+        exit 1
+    fi
+}
+
 # check application exist or not
 
 dnf list installed mysql
 
-if [ $? -ne 0 ]; then
-    echo "Not Installed MySql Proceed With Installation."
+if [ $1 -ne 0 ]; then
+    echo "Not Installed $2 Proceed With Installation."
     dnf install mysql -y
+    VALIDATE $? MySql
 else 
-    echo "MySql already exist...! Skipping..!"
+    echo "$2 already exist...! Skipping..!"
 fi
 
 dnf list installed nginx
 
-if [ $? -ne 0 ]; then
-    echo "Not Installed Nginx Proceed With Installation."
+if [ $1 -ne 0 ]; then
+    echo "Not Installed $2 Proceed With Installation."
     dnf install nginx -y
+    VALIDATE $? Nginx
 else 
-    echo "Nginx already exist...! Skipping..!"
+    echo "$2 already exist...! Skipping..!"
 fi
 
 dnf list installed python3
 
-if [ $? -ne 0 ]; then
-    echo "Not Installed Python Proceed With Installation."
-    dnf install python -y
+if [ $1 -ne 0 ]; then
+    echo "Not Installed $2 Proceed With Installation."
+    dnf install python3 -y
+    VALIDATE $? Python
 else 
-    echo "Python already exist...! Skipping..!"
+    echo "$2 already exist...! Skipping..!"
 fi
 
 
