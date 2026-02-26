@@ -15,6 +15,11 @@ if [ $USER_ID -ne 0 ]; then
     exit 1
 fi
 
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
+
 VALIDATE(){
     if [ $1 -ne 0 ]; then
         echo "Error::Command Not Found Plese check once the command"
@@ -27,31 +32,31 @@ VALIDATE(){
 dnf list installed mysql
 
 if [ $? -ne 0 ]; then
-    echo "Not Installed $2 Proceed With Installation."
+    echo "Not Installed $R $2 $N Proceed With Installation."
     dnf install mysql -y
     VALIDATE $? MySql
 else 
-    echo "$2 already exist...! Skipping..!"
+    echo "$2 already exist...! $Y Skipping..! $N"
 fi
 
 dnf list installed nginx
 
 if [ $? -ne 0 ]; then
-    echo "Not Installed $2 Proceed With Installation."
+    echo "Not Installed $R $2 $N Proceed With Installation."
     dnf install nginx -y
     VALIDATE $? Nginx
 else 
-    echo "$2 already exist...! Skipping..!"
+    echo "$2 already exist...! $Y Skipping..! $N"
 fi
 
 dnf list installed python3
 
 if [ $? -ne 0 ]; then
-    echo "Not Installed $2 Proceed With Installation."
+    echo "Not Installed $R $2 $N Proceed With Installation."
     dnf install python3 -y
     VALIDATE $? Python
 else 
-    echo "$2 already exist...! Skipping..!"
+    echo "$2 already exist...!  $Y Skipping..! $N"
 fi
 
 
