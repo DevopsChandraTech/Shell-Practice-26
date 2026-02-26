@@ -28,3 +28,26 @@ fi
 # install application
 
 dnf install mysql -y
+
+if [ $? -ne 0 ]; then
+    echo "Error:: Command Not Found.Check once the Command."
+    exit 1
+fi
+
+dnf list installed mysql
+
+if [ $? -ne 0 ]; then
+    echo "Not Installed Nginx Proceed With Installation."
+else 
+    echo "Nginx already exist...! Skipping..!"
+fi
+
+# install application
+
+dnf install nginx -y
+
+if [ $? -ne 0 ]; then
+    echo "Error:: Command Not Found.Check once the Command."
+    exit 1
+fi
+
