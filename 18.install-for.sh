@@ -15,56 +15,18 @@ if [ $USER_ID -ne 0 ]; then
     exit 1
 fi
 
-# check application installed or not
+# check application exist or not
 
 dnf list installed mysql
 
 if [ $? -ne 0 ]; then
     echo "Not Installed MySql Proceed With Installation."
+    dnf install mysql -y
 else 
     echo "MySql already exist...! Skipping..!"
 fi
 
-# install application
-
-dnf install mysql -y
-
 if [ $? -ne 0 ]; then
-    echo "Error:: Command Not Found.Check once the Command."
-    exit 1
-fi
+    echo "MySql command Not Found..! Pls check once the command."
 
-dnf list installed nginx
-
-if [ $? -ne 0 ]; then
-    echo "Not Installed Nginx Proceed With Installation."
-else 
-    echo "Nginx already exist...! Skipping..!"
-fi
-
-# install application
-
-dnf install python3 -y
-
-if [ $? -ne 0 ]; then
-    echo "Error:: Command Not Found.Check once the Command."
-    exit 1
-fi
-
-dnf list installed python
-
-if [ $? -ne 0 ]; then
-    echo "Not Installed Python Proceed With Installation."
-else 
-    echo "Python already exist...! Skipping..!"
-fi
-
-# install application
-
-dnf install python3 -y
-
-if [ $? -ne 0 ]; then
-    echo "Error:: Command Not Found.Check once the Command."
-    exit 1
-fi
 
