@@ -31,6 +31,8 @@ do
     dnf list installed $package
     if [ $? -ne 0 ]; then
         echo -e "$G Installing::$N $package..!"
+        dnf install $package
+        VALIDATE $? $package
     else 
         echo -e "$package already exist $Y Skipping...! $N"
     fi
