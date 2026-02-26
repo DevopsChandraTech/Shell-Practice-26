@@ -44,7 +44,24 @@ fi
 
 # install application
 
-dnf install nginx -y
+dnf install python3 -y
+
+if [ $? -ne 0 ]; then
+    echo "Error:: Command Not Found.Check once the Command."
+    exit 1
+fi
+
+dnf list installed python
+
+if [ $? -ne 0 ]; then
+    echo "Not Installed Python Proceed With Installation."
+else 
+    echo "Python already exist...! Skipping..!"
+fi
+
+# install application
+
+dnf install python3 -y
 
 if [ $? -ne 0 ]; then
     echo "Error:: Command Not Found.Check once the Command."
