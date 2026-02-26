@@ -30,8 +30,8 @@ do
     # check package status
     dnf list installed $package
     if [ $? -ne 0 ]; then
-        echo "$G Installing::$N $package..!"
+        echo -e "$G Installing::$N $package..!"
     else 
-        echo "$package already exist $Y Skipping...! $N"
+        echo -e "$package already exist $Y Skipping...! $N"
     fi
 done
