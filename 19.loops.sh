@@ -1,5 +1,5 @@
 #!/bin/bash
 for package in $@;
 do
-    package $package
+    echo "package $package"
 done
