@@ -20,6 +20,11 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+LOG_FOLDER="/var/log/shell-script"
+SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
+LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.sh"
+
+
 VALIDATE(){
     if [ $1 -ne 0 ]; then
         echo "Error::Command Not Found Plese check once the command"
@@ -33,7 +38,7 @@ dnf list installed mysql
 
 if [ $? -ne 0 ]; then
     echo -e "Not Installed $R $2 $N Proceed With Installation."
-    dnf install mysql -y
+    dnf install mysql -y &>> $LOG_FILE
     VALIDATE $? MySql
 else 
     echo -e "$2 already exist...! $Y Skipping..! $N"
@@ -43,7 +48,7 @@ dnf list installed nginx
 
 if [ $? -ne 0 ]; then
     echo -e "Not Installed $R $2 $N Proceed With Installation."
-    dnf install nginx -y
+    dnf install nginx -y &>> $LOG_FILE
     VALIDATE $? Nginx
 else 
     echo -e "$2 already exist...! $Y Skipping..! $N"
@@ -53,10 +58,10 @@ dnf list installed python3
 
 if [ $? -ne 0 ]; then
     echo -e "Not Installed $R $2 $N Proceed With Installation."
-    dnf install python3 -y
+    dnf install python3 -y &>> $LOG_FILE
     VALIDATE $? Python
 else 
-    echo -e "$2 already exist...!  $Y Skipping..! $N"
+    echo -e "$2 already exist...!  $Y Skipping..! $N" 
 fi
 
 
