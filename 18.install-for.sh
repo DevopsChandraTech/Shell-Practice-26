@@ -26,7 +26,15 @@ else
     echo "MySql already exist...! Skipping..!"
 fi
 
+dnf list installed nginx
+
 if [ $? -ne 0 ]; then
-    echo "MySql command Not Found..! Pls check once the command."
+    echo "Not Installed Nginx Proceed With Installation."
+    dnf install nginx -y
+else 
+    echo "Nginx already exist...! Skipping..!"
+fi
+
+
 
 
