@@ -35,6 +35,13 @@ else
     echo "Nginx already exist...! Skipping..!"
 fi
 
+dnf list installed python3
 
+if [ $? -ne 0 ]; then
+    echo "Not Installed Python Proceed With Installation."
+    dnf install python -y
+else 
+    echo "Python already exist...! Skipping..!"
+fi
 
 
