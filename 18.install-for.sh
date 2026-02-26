@@ -42,7 +42,7 @@ if [ $? -ne 0 ]; then
     dnf install mysql -y &>> $LOG_FILE
     VALIDATE $? MySql
 else 
-    echo -e "$2 already exist...! $Y Skipping..! $N" &>> $LOG_FILE
+    echo -e "$2 already exist...! $Y Skipping..! $N" | tee -a $LOG_FILE
 fi
 
 dnf list installed nginx
@@ -52,7 +52,7 @@ if [ $? -ne 0 ]; then
     dnf install nginx -y &>> $LOG_FILE
     VALIDATE $? Nginx
 else 
-    echo -e "$2 already exist...! $Y Skipping..! $N" &>> $LOG_FILE
+    echo -e "$2 already exist...! $Y Skipping..! $N" | tee -a $LOG_FILE
 fi
 
 dnf list installed python3
@@ -62,7 +62,7 @@ if [ $? -ne 0 ]; then
     dnf install python3 -y &>> $LOG_FILE
     VALIDATE $? Python
 else 
-    echo -e "$2 already exist...!  $Y Skipping..! $N" &>> $LOG_FILE
+    echo -e "$2 already exist...!  $Y Skipping..! $N" | tee -a $LOG_FILE
 fi
 
 
