@@ -25,8 +25,8 @@ VALIDATE(){
     fi
 }
 
-for package in $@;
 echo "script started executed at $(date)"
+for package in $@;
 do
     # check package status
     dnf list installed $package &>> $LOG_FILE
