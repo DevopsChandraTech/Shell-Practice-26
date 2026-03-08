@@ -22,4 +22,4 @@
 while IFS= read -r line; do #IFS -> Internal Field Separator
     # Process each line here
     echo "$line"
-done < "20.script-1"   
+done < "20.script-1.sh"   
