@@ -12,6 +12,7 @@ echo "Startig countdown"
 while [ $count -gt 0 ]
 do
     echo "Time left in $count"
+    sleep 1
     count=$((count - 1))
 done
 
