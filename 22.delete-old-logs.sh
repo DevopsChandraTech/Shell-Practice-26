@@ -17,7 +17,17 @@ SOURCE_DIR=/home/ec2-user/app-logs
 
 if [ ! -d SOURCE_DIR ]; then
     echo "ERROR:: $SOURCE_DIR does not exit"
+    exit 1
 else
     echo "SUCCESS:: $SOURCE_DIR exists %Y SKIPPING %N"
 fi
+
+FILES_TO_DELETE=$(find $SOURCE_DIR "*.log" -type f -size +2k)
+
+while IFS= read -r $file_path
+do
+    echo "ERROR:: Deleted file $file_path"
+    rm -rf $file_path
+    echo "Deleted the File $file_path"
+done <<< $FILES_TO_DELETE
 
