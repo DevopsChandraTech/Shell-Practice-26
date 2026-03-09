@@ -22,7 +22,7 @@ else
     echo "SUCCESS:: $SOURCE_DIR exists %Y SKIPPING %N"
 fi
 
-FILES_TO_DELETE=$(find $SOURCE_DIR "*.log" -type f -size +2k)
+FILES_TO_DELETE=$(find $SOURCE_DIR "*.log" -type f -mtime +14)
 
 while IFS= read -r $file_path
 do
