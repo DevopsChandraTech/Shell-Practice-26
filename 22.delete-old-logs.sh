@@ -15,7 +15,7 @@ mkdir -p $LOG_FOLDER
 echo "the script executed started at $(date)"
 SOURCE_DIR=/home/ec2-user/app-logs
 
-if [ ! -d SOURCE_DIR ]; then
+if [ ! -d $SOURCE_DIR ]; then
     echo "ERROR:: $SOURCE_DIR does not exit"
     exit 1
 else
