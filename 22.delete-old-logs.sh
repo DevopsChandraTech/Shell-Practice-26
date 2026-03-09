@@ -16,13 +16,13 @@ echo "the script executed started at $(date)"
 SOURCE_DIR=/home/ec2-user/app-logs
 
 if [ ! -d $SOURCE_DIR ]; then
-    echo "ERROR:: $SOURCE_DIR does not exit"
+    echo -e "ERROR:: $SOURCE_DIR does not exit"
     exit 1
 else
-    echo "SUCCESS:: $SOURCE_DIR exists %Y SKIPPING %N"
+    echo -e "SUCCESS:: $SOURCE_DIR exists %Y SKIPPING %N"
 fi
 
-FILES_TO_DELETE=$(find $SOURCE_DIR "*.log" -type f -mtime +14)
+FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -type f -mtime +14)
 
 while IFS= read -r $file_path
 do
