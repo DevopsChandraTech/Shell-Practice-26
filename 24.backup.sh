@@ -14,7 +14,7 @@ LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 mkdir -p $LOGS_FOLDER
 SOURCE_DIR=$1
 DESTINATION_DIR=$2
-NO_OF_DAYS=$(3:-14) #NOT MENTION DAYS CONSIDER DEFAULT DAYS 14
+DAYS=${3:-14} #NOT MENTION DAYS CONSIDER DEFAULT DAYS 14
 echo "this folder is executed by $(date)"
 
 if [ $USER_ID -ne 0 ]; then
@@ -49,8 +49,8 @@ fi
 FILES=$(find $SOURCE_DIR -name "*.log" -type f -mtime +14)
 
 if [ ! -z "${FILES}" ]; then
-    echo "the directory empty..! $Y SKIPPING $N"
-else 
     echo "files found"
+else 
+    echo -e "the directory empty..! $Y SKIPPING $N"
 fi
 
