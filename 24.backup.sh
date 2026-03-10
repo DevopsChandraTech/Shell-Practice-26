@@ -8,13 +8,15 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+SOURCE_DIR=$1
+DESTINATION_DIR=$2
+DAYS=${3:-14} #NOT MENTION DAYS CONSIDER DEFAULT DAYS 14
+
 LOGS_FOLDER=/var/log/shell-script
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 mkdir -p $LOGS_FOLDER
-SOURCE_DIR=$1
-DESTINATION_DIR=$2
-DAYS=${3:-14} #NOT MENTION DAYS CONSIDER DEFAULT DAYS 14
+
 echo "this folder is executed by $(date)"
 
 if [ $USER_ID -ne 0 ]; then
@@ -29,6 +31,7 @@ fi
 
 USAGE(){
     echo "24.backup.sh <source directory> <destination directory> <no.of days>(optional) default is 14days>"
+    exit 1
 }
 
 if [ $# -lt 2 ]; then
@@ -50,8 +53,8 @@ FILES=$(find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS)
 
 if [ ! -z "${FILES}" ]; then
     echo "files found: $FILES"
-    TIME_STAMP=$(date +%F-%H-%M-%S)
-    ZIP_FILE_NAME="$DESTINATION_DIR/app-logs-$TIME_STAMP.zip"
+    TIMESTAMP=$(date +%F-%H-%M-%S)
+    ZIP_FILE_NAME="$DESTINATION_DIR/app-logs-$TIMESTAMP.zip"
     echo "zip file name : $ZIP_FILE_NAME"
     find $SOURCE_DIR -name "*.log" -type f -mtime $DAYS | zip -@ -j "$ZIP_FILE_NAME"
 
