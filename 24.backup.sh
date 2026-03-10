@@ -41,7 +41,7 @@ if [ ! -d $SOURCE_DIR ]; then
 fi
 
 if [ ! -d $DESTINATION_DIR ]; then
-    echo "$R destination $DESTINATION_DIR does not exist $N"
+    echo -e "$R destination $DESTINATION_DIR does not exist $N"
     exit 1
 fi
 
