@@ -56,7 +56,7 @@ if [ ! -z "${FILES}" ]; then
     TIMESTAMP=$(date +%F-%H-%M-%S)
     ZIP_FILE_NAME="$DESTINATION_DIR/app-logs-$TIMESTAMP.zip"
     echo "zip file name : $ZIP_FILE_NAME"
-    find $SOURCE_DIR -name "*.log" -type f -mtime $DAYS | zip -@ -j "$ZIP_FILE_NAME"
+    find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS | zip -@ -j "$ZIP_FILE_NAME"
 
     if [ ! -f $ZIP_FILE_NAME ]; then
         echo -e "Archeival..! $G SUCCESS $N"
