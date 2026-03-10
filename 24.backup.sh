@@ -21,8 +21,8 @@ fi
 
 # the special variable how many arguments passed into script $#
 
-SOURCE_DIR=$(find <LOGS_DIR> -name <name of file> -type f -mtime +14)
-DESTINATION_DIR=$(DEST_DIR)
+# SOURCE_DIR=$(find <LOGS_DIR> -name <name of file> -type f -mtime +14)
+# DESTINATION_DIR=$(DEST_DIR)
 
 USAGE(){
     echo "24.backup.sh <source directory> <destination directory> <no.of days>(optional) default is 14days>"
