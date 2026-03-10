@@ -35,12 +35,12 @@ if [ $# -lt 2 ]; then
     USAGE
 fi
 
-if [ ! -d $SOURCE_DIR ]
+if [ ! -d $SOURCE_DIR ]; then
     echo -e "$R Source $SOURCE_DIR does not exist $N"
     exit 1
 fi
 
-if [ ! -d $DESTINATION_DIR ]
+if [ ! -d $DESTINATION_DIR ]; then
     echo "$R destination $DESTINATION_DIR does not exist $N"
     exit 1
 fi
