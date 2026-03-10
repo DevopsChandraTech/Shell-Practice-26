@@ -12,6 +12,8 @@ LOGS_FOLDER=/var/log/shell-script
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 mkdir -p $LOGS_FOLDER
+SOURCE_DIR=$1
+DESTINATION_DIR=$2
 echo "this folder is executed by $(date)"
 
 if [ $USER_ID -ne 0 ]; then
@@ -32,3 +34,14 @@ if [ $# -lt 2 ]; then
     echo -e "ERROR:: Pass Source and Destination arguments."
     USAGE
 fi
+
+if [ ! -d $SOURCE_DIR ]
+    echo -e "$R Source $SOURCE_DIR does not exist $N"
+    exit 1
+fi
+
+if [ ! -d $DESTINATION_DIR ]
+    echo "$R destination $DESTINATION_DIR does not exist $N"
+    exit 1
+fi
+
