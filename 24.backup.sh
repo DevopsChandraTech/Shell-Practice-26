@@ -17,7 +17,7 @@ SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 mkdir -p $LOGS_FOLDER
 
-echo "this folder is executed by $(date)"
+echo "this folder is executed by $(date)" | tee -a $LOG_FILE
 
 if [ $USER_ID -ne 0 ]; then
     echo -e "$R ERROR $N:: Please run with root user privilizes."
@@ -30,7 +30,7 @@ fi
 # DESTINATION_DIR=$(DEST_DIR)
 
 USAGE(){
-    echo "24.backup.sh <source directory> <destination directory> <no.of days>(optional) default is 14days>"
+    echo "sudo sh 24.backup.sh <source directory> <destination directory> <no.of days>(optional) default is 14days>"
     exit 1
 }
 
@@ -53,12 +53,12 @@ FILES=$(find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS)
 
 if [ ! -z "${FILES}" ]; then
     echo "files found: $FILES"
-    TIMESTAMP=$(date +%F-%H-%M-%S)
+    TIMESTAMP=$(date +%F-%H-%M)
     ZIP_FILE_NAME="$DESTINATION_DIR/app-logs-$TIMESTAMP.zip"
     echo "zip file name : $ZIP_FILE_NAME"
     find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS | zip -@ -j "$ZIP_FILE_NAME"
 
-    if [ ! -f $ZIP_FILE_NAME ] 
+    if [ -f $ZIP_FILE_NAME ] 
     then
         echo -e "Archeival..! $G SUCCESS $N"
         while IFS= read -r filepath
