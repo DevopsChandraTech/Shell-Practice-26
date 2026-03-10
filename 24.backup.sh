@@ -62,9 +62,9 @@ if [ ! -z "${FILES}" ]; then
         echo -e "Archeival..! $G SUCCESS $N"
         while IFS= read -r $file_path
         do
-            echo "ERROR:: Deleted file $file_path"
+            echo "Deleted file : $file_path"
             rm -rf $file_path
-            echo "Deleted the File $file_path"
+            echo "Deleted the File : $file_path"
         done <<< $FILES
     else
         echo -e "Not Archevied..! $R FAILURE $N" 
