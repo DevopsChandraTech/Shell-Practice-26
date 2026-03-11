@@ -62,7 +62,7 @@ if [ ! -z "${FILES}" ]; then
         dnf install zip -y &>>$LOG_FILE
         echo "Installig zip"
     else 
-        echo -e "zip already installed $Y SKIPPING $N" 
+        echo -e "zip already installed $Y SKIPPING $N" &>>$LOG_FILE
     fi
 
     find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS | zip -@ -j "$ZIP_FILE_NAME"
