@@ -14,7 +14,8 @@ DAYS=${3:-14} #NOT MENTION DAYS CONSIDER DEFAULT DAYS 14
 
 LOGS_FOLDER=/var/log/shell-script
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
-LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
+# LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" # this is for backup log folder
+LOG_FILE="$LOGS_FOLDER/backup.log" # modified for crontab command backup log folder
 mkdir -p $LOGS_FOLDER
 
 echo "this folder is executed by $(date)" | tee -a $LOG_FILE
@@ -56,6 +57,14 @@ if [ ! -z "${FILES}" ]; then
     TIMESTAMP=$(date +%F-%H-%M)
     ZIP_FILE_NAME="$DESTINATION_DIR/app-logs-$TIMESTAMP.zip"
     echo "zip file name : $ZIP_FILE_NAME"
+    dnf list installed zip
+    if [ $? -ne 0 ]; then
+        dnf install zip -y
+        echo "Installig zip"
+    else 
+        echo -e "zip already installed $Y SKIPPING $N" 
+    fi
+    
     find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS | zip -@ -j "$ZIP_FILE_NAME"
 
     if [ -f $ZIP_FILE_NAME ] 
