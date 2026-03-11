@@ -57,14 +57,14 @@ if [ ! -z "${FILES}" ]; then
     TIMESTAMP=$(date +%F-%H-%M)
     ZIP_FILE_NAME="$DESTINATION_DIR/app-logs-$TIMESTAMP.zip"
     echo "zip file name : $ZIP_FILE_NAME"
-    dnf list installed zip
+    dnf list installed zip &>>$LOG_FILE
     if [ $? -ne 0 ]; then
-        dnf install zip -y
+        dnf install zip -y &>>$LOG_FILE
         echo "Installig zip"
     else 
         echo -e "zip already installed $Y SKIPPING $N" 
     fi
-    
+
     find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS | zip -@ -j "$ZIP_FILE_NAME"
 
     if [ -f $ZIP_FILE_NAME ] 
